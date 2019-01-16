@@ -38,12 +38,30 @@ module.exports = {
         exclude: /node_modules/
       },
       {
+        test: /\.(eot|woff|woff2|ttf)([\\?]?.*)$/,
+        loader: 'url-loader'
+      },
+      {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'url-loader',
         options: {
           limit: 10000,
           name: '[name].[ext]?[hash]'
         }
+      },
+      {
+        test: /\.css?$/i,
+        use: isProd 
+            ? ExtractTextPlugin.extract({
+                use: [
+                    {
+                        loader: 'css-loader',
+                        options: { minimize: true }
+                    }
+                ],
+                fallback: 'vue-style-loader'
+            })
+            : ['vue-style-loader', 'css-loader']
       },
       {
         test: /\.styl(us)?$/,
@@ -60,6 +78,21 @@ module.exports = {
             })
           : ['vue-style-loader', 'css-loader', 'stylus-loader']
       },
+      {
+        test: /\.(scss|sass)?$/i,
+        use: isProd
+            ? ExtractTextPlugin.extract({
+                use: [
+                    {
+                        loader: 'css-loader',
+                        options: { minimize: true }
+                    },
+                    'sass-loader'
+                ],
+                fallback: 'vue-style-loader'
+            })
+            : ['vue-style-loader', 'css-loader', 'sass-loader']
+      }
     ]
   },
   performance: {

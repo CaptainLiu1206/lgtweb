@@ -1,5 +1,5 @@
 <template>
-    <div class="home">{{pagename}}</div>    
+  <div class="home">home</div>
 </template>
 <script>
 export default {
@@ -16,6 +16,6 @@ export default {
     }
 }
 </script>
-<style>
+<style lang="scss">
 
 </style>

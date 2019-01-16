@@ -6,6 +6,13 @@ import { sync } from 'vuex-router-sync'
 import titleMixin from './util/title'
 import * as filters from './util/filters'
 
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+
+import './assets/scss/index.scss'
+
+Vue.use(ElementUI)
+
 // mixin for handling title
 Vue.mixin(titleMixin)
 
