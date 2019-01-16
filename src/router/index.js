@@ -23,7 +23,7 @@ export function createRouter () {
       // { path: '/item/:id(\\d+)', component: ItemView },
       // { path: '/user/:id', component: UserView },
       // { path: '/', redirect: '/top' }
-      { path: '/', component: Home}
+      { path: '/', component: Home }
     ]
   })
 }

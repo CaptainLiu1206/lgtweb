@@ -35,6 +35,11 @@ body {
     opacity: 0;
 }
 
+.rounded-circle {
+    border-radius: 50%;
+    overflow: hidden;
+}
+
 .container {
     width: 100%;
     padding-right: 15px;
@@ -42,28 +47,25 @@ body {
     margin-right: auto;
     margin-left: auto;
 }
-@media (min-width: 1200px) {
+@media (min-width: 576px) {
     .container {
-        min-width: 1200px;
-        width: 1200px;
+        max-width: 540px;
     }
 }
-
-@media (min-width: 992px) {
-    .container {
-        max-width: 960px;
-    }
-}
-
 @media (min-width: 768px) {
     .container {
         max-width: 720px;
     }
 }
-
-@media (min-width: 576px) {
+@media (min-width: 992px) {
     .container {
-        max-width: 540px;
+        max-width: 960px;
+    }
+}
+@media (min-width: 1200px) {
+    .container {
+        min-width: 1200px;
+        width: 1200px;
     }
 }
 
