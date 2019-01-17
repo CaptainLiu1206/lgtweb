@@ -4,14 +4,17 @@
     <transition name="fade" mode="out-in">
       <router-view class="view"></router-view>
     </transition>
+    <Footer />
   </div>
 </template>
 
 <script>
-import Header from './layout/Header.vue'
+import Header from './layout/Header'
+import Footer from './layout/Footer'
 export default {
   components: {
-    Header
+    Header,
+    Footer
   }
 }
 </script>

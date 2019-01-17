@@ -34,174 +34,337 @@
               <p>Donec rutrum congue leo eget malesuada</p>
             </div>
             <div class="right-content">
-              <button><i class="el-icon-arrow-left swiper-button-prev"></i></button>
-              <button><i class="el-icon-arrow-right swiper-button-next"></i></button>
+              <button><i class="el-icon-arrow-left swiper-button course-swiper-button-prev"></i></button>
+              <button><i class="el-icon-arrow-right swiper-button course-swiper-button-next"></i></button>
             </div>
           </div>
           <div class="course-list">
-            <div class="courses" v-swiper:mySwiper="swiperOption" @someSwiperEvent="callback">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide course-item" v-for="item in popularCourses" :key="`popularCourses_${item.id}`">
-                        <div class="img-wrapper">
-                            <img
-                                class="course-thumb"
-                                :src="item.imgUrl"
-                                alt=""
-                            >
-                            </div>
-                            <div class="avatar">
-                            <img
-                                :src="item.avatar"
-                                alt=""
-                                class="rounded-circle"
-                            >
-                            <h4 class="instructor">
-                                <a href="">{{item.instructor}}</a>
-                            </h4>
-                            </div>
-                            <div class="item-detail">
-                            <h3 class="title">
-                                <a href="">{{item.title}}</a>
-                            </h3>
-                            <div class="price-rate">
-                                <div class="price">
-                                    <span class="currency">￥</span>
-                                    <span class="num">{{item.price}}</span>
-                                </div>
-                                <div class="rate">
-                                    <span class="star">
-                                        <el-rate v-model="item.rate" :disabled="true"></el-rate>
-                                    </span>
-                                    <span class="num">{{item.rate}}</span>
-                                </div>
-                            </div>
-                            <div class="label">
-                                <span class="date">{{item.date}}</span>
-                                <span class="city">{{item.city}}</span>
-                            </div>
-                            <div class="meta">
-                                <a
-                                href=""
-                                class="sponsor"
-                                >
-                                <div class="thumb-wrapper">
-                                    <img
-                                    :src="item.sponsor.thumb"
-                                    class="rounded-circle"
-                                    alt=""
-                                    >
-                                </div>
-                                <a class="name">{{item.sponsor.name}}</a>
-                                </a>
-                                <div class="view">
-                                <i class="icon el-icon-view"></i>
-                                <span class="times">{{item.viewTime}}</span>
-                                </div>
-                            </div>
-                            </div>
+            <div
+              class="courses"
+              v-swiper:courseSwiper="coursesSwiperOption"
+              @someSwiperEvent="callback"
+            >
+              <div class="swiper-wrapper">
+                <div
+                  class="swiper-slide course-item"
+                  v-for="item in popularCourses"
+                  :key="`popularCourses_${item.id}`"
+                >
+                  <div class="img-wrapper">
+                    <img
+                      class="course-thumb"
+                      :src="item.imgUrl"
+                      alt=""
+                    >
+                  </div>
+                  <div class="avatar">
+                    <img
+                      :src="item.avatar"
+                      alt=""
+                      class="rounded-circle"
+                    >
+                    <h4 class="instructor">
+                      <a href="">{{item.instructor}}</a>
+                    </h4>
+                  </div>
+                  <div class="item-detail">
+                    <h3 class="title">
+                      <a href="">{{item.title}}</a>
+                    </h3>
+                    <div class="price-rate">
+                      <div class="price">
+                        <span class="currency">￥</span>
+                        <span class="num">{{item.price}}</span>
+                      </div>
+                      <div class="rate">
+                        <span class="star">
+                          <el-rate
+                            v-model="item.rate"
+                            :disabled="true"
+                          ></el-rate>
+                        </span>
+                        <span class="num">{{item.rate}}</span>
+                      </div>
                     </div>
+                    <div class="label">
+                      <span class="date">{{item.date}}</span>
+                      <span class="city">{{item.city}}</span>
+                    </div>
+                    <div class="meta">
+                      <a
+                        href=""
+                        class="sponsor"
+                      >
+                        <div class="thumb-wrapper">
+                          <img
+                            :src="item.sponsor.thumb"
+                            class="rounded-circle"
+                            alt=""
+                          >
+                        </div>
+                        <a class="name">{{item.sponsor.name}}</a>
+                      </a>
+                      <div class="view">
+                        <i class="icon el-icon-view"></i>
+                        <span class="times">{{item.viewTime}}</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
     <section class="hot-search bg-black">
-        <div class="section-padding">
-            <div class="container">
-                <div class="top-content text-center">
-                    <h3 class="section-title">HOT SEARCH</h3>
-                    <P>Donec rutrum congue leo eget malesuada</P>
+      <div class="section-padding">
+        <div class="container">
+          <div class="top-content text-center">
+            <h3 class="section-title">HOT SEARCH</h3>
+            <P>Donec rutrum congue leo eget malesuada</P>
+          </div>
+          <el-row class="courses">
+            <el-col
+              :span="8"
+              class="left"
+            >
+              <div class="wrapper">
+                <div
+                  class="thumb"
+                  :style="`background-image: url(${popularCourses[0].imgUrl});`"
+                ></div>
+                <div class="item-detail">
+                  <div class="title-wrapper">
+                    <a
+                      href="##"
+                      class="item-title"
+                    >{{popularCourses[0].title}}</a>
+                  </div>
                 </div>
-                <el-row class="courses">
-                    <el-col :span="8" class="left">
-                        <div class="wrapper">
-                            <div class="thumb" :style="`background-image: url(${popularCourses[0].imgUrl});`"></div>
-                            <div class="item-detail">
-                                <div class="title-wrapper">
-                                    <a href="##" class="item-title">{{popularCourses[0].title}}</a>
-                                </div>
-                            </div>
-                        </div>
-                    </el-col>
-                    <el-col :span="16" class="right">
-                        <el-row class="right-top">
-                            <el-col :span="12">
-                                <div class="wrapper">
-                                    <div class="thumb" :style="`background-image: url(${popularCourses[1].imgUrl});`"></div>
-                                    <div class="item-detail">
-                                        <div class="title-wrapper">
-                                            <a href="##" class="item-title">{{popularCourses[1].title}}</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </el-col>
-                            <el-col :span="12">
-                                <div class="wrapper">
-                                    <div class="thumb" :style="`background-image: url(${popularCourses[2].imgUrl});`"></div>
-                                    <div class="item-detail">
-                                        <div class="title-wrapper">
-                                            <a href="##" class="item-title">{{popularCourses[2].title}}</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </el-col>
-                        </el-row>
-                        <div class="right-bottom">
-                            <div class="wrapper">
-                                <div class="thumb" :style="`background-image: url(${popularCourses[3].imgUrl});`"></div>
-                                <div class="item-detail">
-                                    <div class="title-wrapper">
-                                        <a href="##" class="item-title">{{popularCourses[3].title}}</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </el-col>
-                </el-row>
-            </div>
+              </div>
+            </el-col>
+            <el-col
+              :span="16"
+              class="right"
+            >
+              <el-row class="right-top">
+                <el-col :span="12">
+                  <div class="wrapper">
+                    <div
+                      class="thumb"
+                      :style="`background-image: url(${popularCourses[1].imgUrl});`"
+                    ></div>
+                    <div class="item-detail">
+                      <div class="title-wrapper">
+                        <a
+                          href="##"
+                          class="item-title"
+                        >{{popularCourses[1].title}}</a>
+                      </div>
+                    </div>
+                  </div>
+                </el-col>
+                <el-col :span="12">
+                  <div class="wrapper">
+                    <div
+                      class="thumb"
+                      :style="`background-image: url(${popularCourses[2].imgUrl});`"
+                    ></div>
+                    <div class="item-detail">
+                      <div class="title-wrapper">
+                        <a
+                          href="##"
+                          class="item-title"
+                        >{{popularCourses[2].title}}</a>
+                      </div>
+                    </div>
+                  </div>
+                </el-col>
+              </el-row>
+              <div class="right-bottom">
+                <div class="wrapper">
+                  <div
+                    class="thumb"
+                    :style="`background-image: url(${popularCourses[3].imgUrl});`"
+                  ></div>
+                  <div class="item-detail">
+                    <div class="title-wrapper">
+                      <a
+                        href="##"
+                        class="item-title"
+                      >{{popularCourses[3].title}}</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </el-col>
+          </el-row>
         </div>
+      </div>
     </section>
     <section class="best-categories section-padding">
-        <div class="container">
-            <div class="top-content text-center">
-                <h2 class="section-title">BEST CATEGORIES</h2>
-                <p>Donec rutrum congue leo eget malesuada</p>
-            </div>
-            <div class="category-items">
-                <div class="item radius text-center" v-for="category in categories" :key="`category_${category.id}`">
-                    <div class="item-thumb"><img class="radius" :src="category.thumb" alt="Item Thumbnail"></div>
-                    <div class="item-details">
-                        <a href="#">
-                            <div class="item-texts">
-                                <i :class="category.icon" class="icon"></i>
-                                <span class="item-title">{{category.title}}</span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="btn-container text-center">
-                <a href="#" class="btn">Browse all</a>
-            </div>
+      <div class="container">
+        <div class="top-content text-center">
+          <h2 class="section-title">BEST CATEGORIES</h2>
+          <p>Donec rutrum congue leo eget malesuada</p>
         </div>
+        <div class="category-items">
+          <div
+            class="item radius text-center"
+            v-for="category in categories"
+            :key="`category_${category.id}`"
+          >
+            <div class="item-thumb"><img
+                class="radius"
+                :src="category.thumb"
+                alt="Item Thumbnail"
+              ></div>
+            <div class="item-details">
+              <a href="#">
+                <div class="item-texts">
+                  <i
+                    :class="category.icon"
+                    class="icon"
+                  ></i>
+                  <span class="item-title">{{category.title}}</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="btn-container text-center">
+          <a
+            href="#"
+            class="btn"
+          >Browse all</a>
+        </div>
+      </div>
     </section>
     <section class="facts">
-        <div class="overlay section-padding">
-            <div class="container">
-                <el-row>
-                    <el-col :span="6" v-for="item in facts" :key="`fact_${item.id}`">
-                        <div class="item">
-                            <div class="icon" :class="item.icon"></div>
-                            <div class="item-detail">
-                                <div class="count">{{item.count}}</div>
-                                <div class="title">{{item.title}}</div>
-                            </div>
-                        </div>
-                    </el-col>
-                </el-row>
-            </div>
+      <div class="overlay section-padding">
+        <div class="container">
+          <el-row>
+            <el-col
+              :span="6"
+              v-for="item in facts"
+              :key="`fact_${item.id}`"
+            >
+              <div class="item">
+                <div
+                  class="icon"
+                  :class="item.icon"
+                ></div>
+                <div class="item-detail">
+                  <div class="count">{{item.count}}</div>
+                  <div class="title">{{item.title}}</div>
+                </div>
+              </div>
+            </el-col>
+          </el-row>
         </div>
+      </div>
+    </section>
+    <section class="blog-posts bg-black">
+      <div class="section-padding">
+        <div class="container">
+          <div class="top-content">
+            <div class="left-content">
+              <h2 class="section-title">RECENT BLOG POSTS</h2>
+              <p>Donec rutrum congue leo eget malesuada</p>
+            </div>
+            <div class="right-content">
+              <button><i class="el-icon-arrow-left swiper-button post-swiper-button-prev"></i></button>
+              <button><i class="el-icon-arrow-right swiper-button post-swiper-button-next"></i></button>
+            </div>
+          </div>
+          <div
+            class="posts"
+            v-swiper:postSwiper="postsSwiperOption"
+            @someSwiperEvent="callback"
+          >
+            <div class="swiper-wrapper">
+              <div
+                class="swiper-slide post-item"
+                v-for="post in posts"
+                :key="`post_${post.id}`"
+              >
+                <img
+                  :src="post.thumb"
+                  class="thumb radius"
+                  alt=""
+                >
+                <div class="item-detail">
+                  <h3 class="title">{{post.title}}</h3>
+                  <div class="meta">
+                    <div class="author">
+                      <i class="icon el-icon-service"></i>
+                      <span>{{post.author}}</span>
+                    </div>
+                    <div class="date">
+                      <i class="icon el-icon-date"></i>
+                      <span>{{post.date}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="sponsers text-center">
+      <div class="section-padding">
+        <div class="container">
+          <div
+            v-swiper:sponserSwiper="sponsersSwiperOption"
+            @someSwiperEvent="callback"
+          >
+            <div class="swiper-wrapper">
+              <div
+                class="swiper-slide sponser-item"
+                v-for="sponser in sponsers"
+                :key="`sponser_${sponser.id}`"
+              >
+                <div>
+                  <div class="top">
+                    <img
+                      :src="sponser.thumb"
+                      class="thumb rounded-circle"
+                      alt=""
+                    >
+                    <span class="name">{{sponser.name}}</span>
+                  </div>
+                  <div class="sponser-detail">{{sponser.desc}}</div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div
+              class="swiper-button-prev"
+              slot="button-prev"
+            ></div>
+            <div
+              class="swiper-button-next"
+              slot="button-next"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="subscribe text-center">
+      <div class="section-padding">
+        <div class="container">
+          <h3 class="title">Subscribe Weekly Newsletter</h3>
+          <div class="form">
+            <input
+              type="text"
+              placeholder="Enter Email Address Here"
+            >
+            <button class="form-btn">Subscribe now</button>
+          </div>
+        </div>
+      </div>
     </section>
   </div>
 </template>
@@ -445,13 +608,107 @@ export default {
           title: "EXPERT INSTRUCTORS"
         }
       ],
-      swiperOption: {
+      posts: [
+        {
+          id: 1,
+          thumb: require("../assets/img/posts/4.jpg"),
+          title: "ow To Create A Local Business Directory Site In WordPress",
+          author: "Anthony Doe",
+          date: "2018-07-08"
+        },
+        {
+          id: 2,
+          thumb: require("../assets/img/posts/5.jpg"),
+          title: "ow To Create A Local Business Directory Site In WordPress",
+          author: "Anthony Doe",
+          date: "2018-07-08"
+        },
+        {
+          id: 3,
+          thumb: require("../assets/img/posts/6.jpg"),
+          title: "ow To Create A Local Business Directory Site In WordPress",
+          author: "Anthony Doe",
+          date: "2018-07-08"
+        },
+        {
+          id: 4,
+          thumb: require("../assets/img/posts/7.jpg"),
+          title: "ow To Create A Local Business Directory Site In WordPress",
+          author: "Anthony Doe",
+          date: "2018-07-08"
+        },
+        {
+          id: 5,
+          thumb: require("../assets/img/posts/8.jpg"),
+          title: "ow To Create A Local Business Directory Site In WordPress",
+          author: "Anthony Doe",
+          date: "2018-07-08"
+        }
+      ],
+      sponsers: [
+        {
+          id: 1,
+          name: "阿里巴巴",
+          thumb: require("../assets/img/avatar/1.png"),
+          desc:
+            "A collection of textile samples lay spread out on the table. Samsa was a travelling salesman and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame."
+        },
+        {
+          id: 2,
+          name: "百度",
+          thumb: require("../assets/img/avatar/2.png"),
+          desc:
+            "A collection of textile samples lay spread out on the table. Samsa was a travelling salesman and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame."
+        },
+        {
+          id: 3,
+          name: "腾讯",
+          thumb: require("../assets/img/avatar/3.png"),
+          desc:
+            "A collection of textile samples lay spread out on the table. Samsa was a travelling salesman and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame."
+        },
+        {
+          id: 4,
+          name: "今日头条",
+          thumb: require("../assets/img/avatar/4.png"),
+          desc:
+            "A collection of textile samples lay spread out on the table. Samsa was a travelling salesman and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame."
+        },
+        {
+          id: 5,
+          name: "滴滴",
+          thumb: require("../assets/img/avatar/5.png"),
+          desc:
+            "A collection of textile samples lay spread out on the table. Samsa was a travelling salesman and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame."
+        }
+      ],
+      coursesSwiperOption: {
         slidesPerView: 4,
+        autoplay: true,
+        simulateTouch: true,
+        navigation: {
+          nextEl: ".course-swiper-button-next",
+          prevEl: ".course-swiper-button-prev"
+        }
+      },
+      postsSwiperOption: {
+        slidesPerView: 3,
+        autoplay: true,
+        simulateTouch: true,
+        navigation: {
+          nextEl: ".post-swiper-button-next",
+          prevEl: ".post-swiper-button-prev"
+        }
+      },
+      sponsersSwiperOption: {
         autoplay: true,
         simulateTouch: true,
         navigation: {
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev"
+        },
+        pagination: {
+          el: ".swiper-pagination"
         }
       }
     };
@@ -473,6 +730,76 @@ export default {
 </script>
 <style lang="scss">
 @import "~assets/scss/variable";
+.top-content {
+  display: inline-block;
+  margin-bottom: 4.7em;
+  width: 100%;
+  p {
+    color: $color-text-label;
+    font-size: 1.125em;
+    font-weight: 600;
+    line-height: 1.4;
+    margin: 0;
+  }
+  .left-content {
+    float: left;
+  }
+  .right-content {
+    float: right;
+    padding-top: 12px;
+    button {
+      background-color: transparent;
+      border: none;
+      outline: none;
+      box-shadow: none;
+      cursor: pointer;
+      margin-left: 5px;
+      padding: 0;
+      height: 35px;
+      > i {
+        background-color: $color-bg-btn-disable;
+        border-radius: 4px;
+        color: #455a64;
+        font-weight: 700;
+        display: inline-block;
+        font-size: 20px;
+        height: 35px;
+        width: 35px;
+        line-height: 35px;
+        text-align: center;
+        margin: 0;
+        &.swiper-button {
+          outline: none;
+          position: static;
+          background-image: none;
+        }
+      }
+    }
+  }
+}
+.btn {
+  line-height: 60px;
+  padding: 0 45px;
+  background: $color-blue;
+  color: $color-normal;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  display: inline-block;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-top: 8px;
+  transition: all 0.3s cubic-bezier(0.55, 0, 0.5, 1);
+  &:hover {
+    background: rgba(13, 71, 161, 0.7);
+    font-size: 16px;
+  }
+}
+.section-padding {
+  padding: 7.125em 0;
+}
 
 .home {
   .carousel {
@@ -516,56 +843,6 @@ export default {
           display: inline-block;
           margin-bottom: 4.7em;
           width: 100%;
-          .left-content {
-            float: left;
-            .section-title {
-              color: $color-text-black;
-              font-size: 1.5625rem;
-              margin: 0 0 7px;
-              font-weight: 900;
-              text-transform: uppercase;
-            }
-            p {
-              color: $color-text-label;
-              font-size: 1.125em;
-              font-weight: 600;
-              line-height: 1.4;
-              margin: 0;
-            }
-          }
-          .right-content {
-            float: right;
-            padding-top: 12px;
-            button {
-              background-color: transparent;
-              border: none;
-              outline: none;
-              box-shadow: none;
-              cursor: pointer;
-              margin-left: 5px;
-              padding: 0;
-              height: 35px;
-              > i {
-                background-color: $color-bg-btn-disable;
-                border-radius: 4px;
-                color: #455a64;
-                font-weight: 700;
-                display: inline-block;
-                font-size: 20px;
-                height: 35px;
-                width: 35px;
-                line-height: 35px;
-                text-align: center;
-                margin: 0;
-                &.swiper-button-prev,
-                &.swiper-button-next {
-                  outline: none;
-                  position: static;
-                  background-image: none;
-                }
-              }
-            }
-          }
         }
         .course-list {
           .courses {
@@ -615,7 +892,7 @@ export default {
                 }
               }
               .item-detail {
-                border: 1px solid $color-color-gray;
+                border: 1px solid $color-border-gray;
                 border-radius: 0 0 5px 5px;
                 padding: 32px 0 0;
                 > .title {
@@ -674,7 +951,7 @@ export default {
                   }
                 }
                 > .meta {
-                  border-top: 1px solid $color-color-gray;
+                  border-top: 1px solid $color-border-gray;
                   color: $color-text-label;
                   font-size: 12px;
                   padding: 0 1.25em;
@@ -887,6 +1164,136 @@ export default {
             }
           }
         }
+      }
+    }
+  }
+  .blog-posts {
+    .posts.swiper-container {
+      width: 100%;
+      overflow: hidden;
+      .post-item {
+        padding: 0 10px;
+        &.swiper-slide-active {
+          padding-left: 0;
+          padding-right: 20px;
+          & + .post-item + .post-item {
+            padding-right: 0;
+            padding-left: 20px;
+          }
+        }
+        .thumb {
+          display: block;
+          width: 100%;
+          max-width: 370px;
+          max-height: 192px;
+        }
+        .item-detail {
+          .title {
+            margin: 16px 0 8px;
+            font-size: 22px;
+            line-height: 1.4;
+            color: $color-normal;
+            font-weight: 600;
+          }
+          .meta {
+            margin-top: 16px;
+            color: $color-text-label;
+            font-weight: 300;
+            font-size: 14px;
+            .icon {
+              padding-right: 8px;
+            }
+            span {
+            }
+            .author {
+              margin-right: 30px;
+            }
+            .author,
+            .date {
+              display: inline-block;
+              vertical-align: middle;
+            }
+          }
+        }
+      }
+    }
+  }
+  .sponsers {
+    .swiper-wrapper {
+      padding-bottom: 80px;
+    }
+    .swiper-pagination {
+      bottom: 40px;
+    }
+    .sponser-item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 15%;
+      .top {
+        .thumb {
+          display: inline-block;
+          vertical-align: middle;
+          width: 90px;
+          height: 90px;
+        }
+        .name {
+          margin-left: 20px;
+          display: inline-block;
+          vertical-align: middle;
+          font-size: 16px;
+          color: $color-text-black;
+          font-weight: 600;
+        }
+      }
+      .sponser-detail {
+        margin-top: 40px;
+        font-size: 16px;
+        color: $color-text-label;
+      }
+    }
+  }
+  .subscribe {
+    background-color: $color-bg-gray;
+    .title {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .form {
+      display: inline-block;
+      max-width: 770px;
+      margin: 3em auto 0.4em;
+      width: 100%;
+      > input {
+        background: #eaedef;
+        border: 1px solid #d0d5d8;
+        border-radius: 5px 0 0 5px;
+        color: #90a4ae;
+        float: left;
+        font-size: 0.875em;
+        font-weight: 700;
+        margin: 0;
+        padding: 1.95% 3% 1.95% 3%;
+        width: 74%;
+        outline: none;
+        line-height: 28px;
+      }
+      > button {
+        line-height: 28px;
+        outline: none;
+        background: #0d47a1;
+        border: 1px solid #0d47a1;
+        border-radius: 0 5px 5px 0;
+        color: #fff;
+        cursor: pointer;
+        float: right;
+        font-size: 12px;
+        font-weight: 700;
+        padding: 1.95% 5% 1.95% 5%;
+        text-align: center;
+        text-transform: uppercase;
+        width: 26%;
       }
     }
   }
