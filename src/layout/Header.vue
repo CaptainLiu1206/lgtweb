@@ -81,9 +81,10 @@
 export default {};
 </script>
 <style lang="scss">
+@import '~assets/scss/variable';
+
 .header {
-  background-color: #2c2d36;
-  color: #85858c;
+  background-color: $color-bg-header;
   font-size: 14px;
   font-weight: 400;
   .header-top {
@@ -91,15 +92,16 @@ export default {};
     line-height: 55px;
     .container {
       a {
-        color: #85858c;
+        color: $color-text-header;
         &:hover {
-          color: #fff;
+          color: $color-normal;
         }
       }
       i {
         font-size: 14px;
         font-weight: 900;
         margin-right: 5px;
+        color: $color-text-header;
       }
       span {
         margin-right: 1.4em;
@@ -116,7 +118,7 @@ export default {};
     }
   }
   .header-bottom {
-    background-color: #fff;
+    background-color: $color-normal;
     .container {
       display: flex;
       align-items: center;
@@ -139,7 +141,7 @@ export default {};
             height: 100%;
             &.is-active {
               .nav-link {
-                color: #0d47a1;
+                color: $color-blue;
                 &::after {
                   position: absolute;
                   bottom: 0px;
@@ -147,7 +149,7 @@ export default {};
                   right: 0;
                   height: 4px;
                   content: '';
-                  background-color: #0d47a1;
+                  background-color: $color-blue;
                 }
               }
             }
@@ -159,7 +161,7 @@ export default {};
               line-height: 110px;
               display: block;
               font-size: 16px;
-              color: #6d8591;
+              color: $color-text-nav-unselected;
               font-weight: 700;
               .icon {
                 position: absolute;
@@ -178,7 +180,7 @@ export default {};
                 transition: opacity 0.3s ease;
                 height: 0;
                 opacity: 0;
-                background-color: #fff;
+                background-color: $color-normal;
                 .menu-item {
                   display: block;
                   color: #6d8591;
@@ -188,13 +190,13 @@ export default {};
                   padding: .5em 15px !important;
                   width: 200px;
                   &:hover {
-                    background-color: #0d47a1;
-                    color: #fff;
+                    background-color: $color-blue;
+                    color: $color-normal;
                   }
                 }
               }
               &:hover {
-                color: #0d47a1;
+                color: $color-blue;
                 .icon {
                   transform: rotate(180deg);
                 }

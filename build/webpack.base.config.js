@@ -17,8 +17,14 @@ module.exports = {
   },
   resolve: {
     alias: {
-      'public': path.resolve(__dirname, '../public')
-    }
+      'public': path.resolve(__dirname, '../public'),
+      'assets': path.resolve(__dirname, '../src/assets'),
+      'components': path.resolve(__dirname, '../src/components'),
+      'util': path.resolve(__dirname, '../src/util'),
+      'layout': path.resolve(__dirname, '../src/layout'),
+      'api': path.resolve(__dirname, '../src/api')
+    },
+    extensions: ['.js', '.scss', '.vue', '.json']
   },
   module: {
     noParse: /es6-promise\.js$/, // avoid webpack shimming process
@@ -46,7 +52,7 @@ module.exports = {
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: '[name].[ext]?[hash]'
+          name: '[name].[hash:8].[ext]?[hash]'
         }
       },
       {

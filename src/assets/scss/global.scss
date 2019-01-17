@@ -1,3 +1,5 @@
+@import './variable';
+
 html,
 body {
     width: 100%;
@@ -69,5 +71,63 @@ body {
     }
 }
 
+.section-padding {
+    padding: 7.125em 0;
+}
+.bg-black {
+    background-color: $color-bg-black;
+}
+.section-title {
+    color: #37474f;
+    font-size: 1.5625rem;
+    font-weight: 900;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin: 0 0 7px;
+}
+.text-center {
+    text-align: center;
+}
+.bg-black {
+    .section-title {
+        color: $color-normal;
+    }
+}
+.top-content {
+    display: inline-block;
+    margin-bottom: 4.7em;
+    width: 100%;
+    p {
+        color: $color-text-label;
+        font-size: 1.125em;
+        font-weight: 600;
+        line-height: 1.4;
+        margin: 0;
+    }
+}
+.radius {
+    border-radius: 5px;
+}
+
+.btn {
+    line-height: 60px;
+    padding: 0 45px;
+    background: $color-blue;
+    color: $color-normal;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    display: inline-block;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-top: 8px;
+    transition: all 0.3s cubic-bezier(0.55, 0, 0.5, 1);
+    &:hover {
+      background: rgba(13, 71, 161, 0.7);
+      font-size: 16px;
+    }
+  }
 // 字体
 // @import url(http://fonts.googleapis.com/css?family=Dosis:500,800);

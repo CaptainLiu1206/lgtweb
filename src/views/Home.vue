@@ -34,71 +34,179 @@
               <p>Donec rutrum congue leo eget malesuada</p>
             </div>
             <div class="right-content">
-              <button><i class="el-icon-arrow-left"></i></button>
-              <button><i class="el-icon-arrow-right"></i></button>
+              <button><i class="el-icon-arrow-left swiper-button-prev"></i></button>
+              <button><i class="el-icon-arrow-right swiper-button-next"></i></button>
             </div>
           </div>
           <div class="course-list">
-            <ul class="courses">
-              <li
-                class="course-item"
-                v-for="item in popularCourses"
-                :key="`popularCourses_${item.id}`"
-              >
-                <div class="img-wrapper">
-                  <img
-                    class="course-thumb"
-                    :src="item.imgUrl"
-                    alt=""
-                  >
-                </div>
-                <div class="avatar">
-                  <img
-                    :src="item.avatar"
-                    alt=""
-                    class="rounded-circle"
-                  >
-                  <h4 class="instructor">
-                    <a href="">{{item.instructor}}</a>
-                  </h4>
-                </div>
-                <div class="item-detail">
-                  <h3 class="title">
-                    <a href="">{{item.title}}</a>
-                  </h3>
-                  <div class="label">
-                    <span class="date">{{item.date}}</span>
-                    <span class="city">{{item.city}}</span>
-                  </div>
-                  <div class="meta">
-                    <a
-                      href=""
-                      class="sponsor"
-                    >
-                      <div class="thumb-wrapper">
-                        <img
-                          :src="item.sponsor.thumb"
-                          class="rounded-circle"
-                          alt=""
-                        >
-                      </div>
-                      <a class="name">{{item.sponsor.name}}</a>
-                    </a>
-                    <div class="view">
-                      <i class="icon el-icon-view"></i>
-                      <span class="times">{{item.viewTime}}</span>
+            <div class="courses" v-swiper:mySwiper="swiperOption" @someSwiperEvent="callback">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide course-item" v-for="item in popularCourses" :key="`popularCourses_${item.id}`">
+                        <div class="img-wrapper">
+                            <img
+                                class="course-thumb"
+                                :src="item.imgUrl"
+                                alt=""
+                            >
+                            </div>
+                            <div class="avatar">
+                            <img
+                                :src="item.avatar"
+                                alt=""
+                                class="rounded-circle"
+                            >
+                            <h4 class="instructor">
+                                <a href="">{{item.instructor}}</a>
+                            </h4>
+                            </div>
+                            <div class="item-detail">
+                            <h3 class="title">
+                                <a href="">{{item.title}}</a>
+                            </h3>
+                            <div class="price-rate">
+                                <div class="price">
+                                    <span class="currency">￥</span>
+                                    <span class="num">{{item.price}}</span>
+                                </div>
+                                <div class="rate">
+                                    <span class="star">
+                                        <el-rate v-model="item.rate" :disabled="true"></el-rate>
+                                    </span>
+                                    <span class="num">{{item.rate}}</span>
+                                </div>
+                            </div>
+                            <div class="label">
+                                <span class="date">{{item.date}}</span>
+                                <span class="city">{{item.city}}</span>
+                            </div>
+                            <div class="meta">
+                                <a
+                                href=""
+                                class="sponsor"
+                                >
+                                <div class="thumb-wrapper">
+                                    <img
+                                    :src="item.sponsor.thumb"
+                                    class="rounded-circle"
+                                    alt=""
+                                    >
+                                </div>
+                                <a class="name">{{item.sponsor.name}}</a>
+                                </a>
+                                <div class="view">
+                                <i class="icon el-icon-view"></i>
+                                <span class="times">{{item.viewTime}}</span>
+                                </div>
+                            </div>
+                            </div>
                     </div>
-                  </div>
                 </div>
-              </li>
-            </ul>
+            </div>
           </div>
         </div>
       </div>
     </section>
+    <section class="hot-search bg-black">
+        <div class="section-padding">
+            <div class="container">
+                <div class="top-content text-center">
+                    <h3 class="section-title">HOT SEARCH</h3>
+                    <P>Donec rutrum congue leo eget malesuada</P>
+                </div>
+                <el-row class="courses">
+                    <el-col :span="8" class="left">
+                        <div class="wrapper">
+                            <div class="thumb" :style="`background-image: url(${popularCourses[0].imgUrl});`"></div>
+                            <div class="item-detail">
+                                <div class="title-wrapper">
+                                    <a href="##" class="item-title">{{popularCourses[0].title}}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </el-col>
+                    <el-col :span="16" class="right">
+                        <el-row class="right-top">
+                            <el-col :span="12">
+                                <div class="wrapper">
+                                    <div class="thumb" :style="`background-image: url(${popularCourses[1].imgUrl});`"></div>
+                                    <div class="item-detail">
+                                        <div class="title-wrapper">
+                                            <a href="##" class="item-title">{{popularCourses[1].title}}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </el-col>
+                            <el-col :span="12">
+                                <div class="wrapper">
+                                    <div class="thumb" :style="`background-image: url(${popularCourses[2].imgUrl});`"></div>
+                                    <div class="item-detail">
+                                        <div class="title-wrapper">
+                                            <a href="##" class="item-title">{{popularCourses[2].title}}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </el-col>
+                        </el-row>
+                        <div class="right-bottom">
+                            <div class="wrapper">
+                                <div class="thumb" :style="`background-image: url(${popularCourses[3].imgUrl});`"></div>
+                                <div class="item-detail">
+                                    <div class="title-wrapper">
+                                        <a href="##" class="item-title">{{popularCourses[3].title}}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </el-col>
+                </el-row>
+            </div>
+        </div>
+    </section>
+    <section class="best-categories section-padding">
+        <div class="container">
+            <div class="top-content text-center">
+                <h2 class="section-title">BEST CATEGORIES</h2>
+                <p>Donec rutrum congue leo eget malesuada</p>
+            </div>
+            <div class="category-items">
+                <div class="item radius text-center" v-for="category in categories" :key="`category_${category.id}`">
+                    <div class="item-thumb"><img class="radius" :src="category.thumb" alt="Item Thumbnail"></div>
+                    <div class="item-details">
+                        <a href="#">
+                            <div class="item-texts">
+                                <i :class="category.icon" class="icon"></i>
+                                <span class="item-title">{{category.title}}</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-container text-center">
+                <a href="#" class="btn">Browse all</a>
+            </div>
+        </div>
+    </section>
+    <section class="facts">
+        <div class="overlay section-padding">
+            <div class="container">
+                <el-row>
+                    <el-col :span="6" v-for="item in facts" :key="`fact_${item.id}`">
+                        <div class="item">
+                            <div class="icon" :class="item.icon"></div>
+                            <div class="item-detail">
+                                <div class="count">{{item.count}}</div>
+                                <div class="title">{{item.title}}</div>
+                            </div>
+                        </div>
+                    </el-col>
+                </el-row>
+            </div>
+        </div>
+    </section>
   </div>
 </template>
 <script>
+require("swiper/dist/css/swiper.css");
 
 export default {
   name: "Home",
@@ -140,6 +248,8 @@ export default {
           id: 1,
           imgUrl: require("../assets/img/popular/1.jpg"),
           title: "Complete JavaScript Course 2018: Build Real Projects!",
+          price: "16.99",
+          rate: 3,
           instructor: "Justin Marks",
           avatar: require("../assets/img/avatar/1.png"),
           date: "2018-08-30",
@@ -149,13 +259,221 @@ export default {
             name: "阿里巴巴"
           },
           viewTime: 10
+        },
+        {
+          id: 2,
+          imgUrl: require("../assets/img/popular/2.jpg"),
+          title: "Complete JavaScript Course 2018: Build Real Projects!",
+          price: "16.99",
+          rate: 3,
+          instructor: "Justin Marks",
+          avatar: require("../assets/img/avatar/2.png"),
+          date: "2018-08-30",
+          city: "北京",
+          sponsor: {
+            thumb: require("../assets/img/avatar/2.png"),
+            name: "阿里巴巴"
+          },
+          viewTime: 10
+        },
+        {
+          id: 3,
+          imgUrl: require("../assets/img/popular/3.jpg"),
+          title: "Complete JavaScript Course 2018: Build Real Projects!",
+          price: "16.99",
+          rate: 3,
+          instructor: "Justin Marks",
+          avatar: require("../assets/img/avatar/3.png"),
+          date: "2018-08-30",
+          city: "北京",
+          sponsor: {
+            thumb: require("../assets/img/avatar/3.png"),
+            name: "阿里巴巴"
+          },
+          viewTime: 10
+        },
+        {
+          id: 4,
+          imgUrl: require("../assets/img/popular/4.jpg"),
+          title: "Complete JavaScript Course 2018: Build Real Projects!",
+          price: "16.99",
+          rate: 3,
+          instructor: "Justin Marks",
+          avatar: require("../assets/img/avatar/4.png"),
+          date: "2018-08-30",
+          city: "北京",
+          sponsor: {
+            thumb: require("../assets/img/avatar/4.png"),
+            name: "阿里巴巴"
+          },
+          viewTime: 10
+        },
+        {
+          id: 5,
+          imgUrl: require("../assets/img/popular/5.jpg"),
+          title: "Complete JavaScript Course 2018: Build Real Projects!",
+          price: "16.99",
+          rate: 3,
+          instructor: "Justin Marks",
+          avatar: require("../assets/img/avatar/5.png"),
+          date: "2018-08-30",
+          city: "北京",
+          sponsor: {
+            thumb: require("../assets/img/avatar/5.png"),
+            name: "阿里巴巴"
+          },
+          viewTime: 10
+        },
+        {
+          id: 6,
+          imgUrl: require("../assets/img/popular/6.jpg"),
+          title: "Complete JavaScript Course 2018: Build Real Projects!",
+          price: "16.99",
+          rate: 3,
+          instructor: "Justin Marks",
+          avatar: require("../assets/img/avatar/6.png"),
+          date: "2018-08-30",
+          city: "北京",
+          sponsor: {
+            thumb: require("../assets/img/avatar/6.png"),
+            name: "阿里巴巴"
+          },
+          viewTime: 10
+        },
+        {
+          id: 7,
+          imgUrl: require("../assets/img/popular/7.jpg"),
+          title: "Complete JavaScript Course 2018: Build Real Projects!",
+          price: "16.99",
+          rate: 3,
+          instructor: "Justin Marks",
+          avatar: require("../assets/img/avatar/7.png"),
+          date: "2018-08-30",
+          city: "北京",
+          sponsor: {
+            thumb: require("../assets/img/avatar/7.png"),
+            name: "阿里巴巴"
+          },
+          viewTime: 10
         }
-      ]
+      ],
+      categories: [
+        {
+          id: 1,
+          icon: "el-icon-goods",
+          title: "DESIGN",
+          thumb: require("../assets/img/category/1.jpg")
+        },
+        {
+          id: 2,
+          icon: "el-icon-goods",
+          title: "DESIGN",
+          thumb: require("../assets/img/category/2.jpg")
+        },
+        {
+          id: 3,
+          icon: "el-icon-goods",
+          title: "DESIGN",
+          thumb: require("../assets/img/category/3.jpg")
+        },
+        {
+          id: 4,
+          icon: "el-icon-goods",
+          title: "DESIGN",
+          thumb: require("../assets/img/category/4.jpg")
+        },
+        {
+          id: 5,
+          icon: "el-icon-goods",
+          title: "DESIGN",
+          thumb: require("../assets/img/category/5.jpg")
+        },
+        {
+          id: 6,
+          icon: "el-icon-goods",
+          title: "DESIGN",
+          thumb: require("../assets/img/category/6.jpg")
+        },
+        {
+          id: 7,
+          icon: "el-icon-goods",
+          title: "DESIGN",
+          thumb: require("../assets/img/category/7.jpg")
+        },
+        {
+          id: 8,
+          icon: "el-icon-goods",
+          title: "DESIGN",
+          thumb: require("../assets/img/category/8.jpg")
+        },
+        {
+          id: 9,
+          icon: "el-icon-goods",
+          title: "DESIGN",
+          thumb: require("../assets/img/category/9.jpg")
+        },
+        {
+          id: 10,
+          icon: "el-icon-goods",
+          title: "DESIGN",
+          thumb: require("../assets/img/category/10.jpg")
+        }
+      ],
+      facts: [
+        {
+          id: 1,
+          icon: "el-icon-picture",
+          count: 788,
+          title: "EXPERT INSTRUCTORS"
+        },
+        {
+          id: 2,
+          icon: "el-icon-edit-outline",
+          count: 788,
+          title: "EXPERT INSTRUCTORS"
+        },
+        {
+          id: 3,
+          icon: "el-icon-menu",
+          count: 788,
+          title: "EXPERT INSTRUCTORS"
+        },
+        {
+          id: 4,
+          icon: "el-icon-star-on",
+          count: 788,
+          title: "EXPERT INSTRUCTORS"
+        }
+      ],
+      swiperOption: {
+        slidesPerView: 4,
+        autoplay: true,
+        simulateTouch: true,
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev"
+        }
+      }
     };
+  },
+  methods: {
+    callback() {}
+  },
+  mounted() {
+    //   setTimeout(() => {
+    //     this.banners.push('/4.jpg')
+    //     console.log('banners update')
+    //   }, 3000)
+    //   console.log(
+    //     'This is current swiper instance object', this.mySwiper,
+    //     'It will slideTo banners 3')
+    // this.mySwiper.slideTo(3, 1000, false);
   }
 };
 </script>
 <style lang="scss">
+@import "~assets/scss/variable";
+
 .home {
   .carousel {
     .banner {
@@ -165,7 +483,7 @@ export default {
       .overlay {
         width: 100%;
         height: 100%;
-        background: rgba(27, 28, 35, 0.75);
+        background: $color-bg-overlay;
         overflow: hidden;
         .container {
           text-align: center;
@@ -174,43 +492,23 @@ export default {
             text-transform: uppercase;
             font-size: 1.875em;
             font-weight: 700;
-            color: #fff;
+            color: $color-normal;
             margin-bottom: 0.85rem;
           }
           .banner-title {
             font-size: 5em;
-            color: #fff;
+            color: $color-normal;
             font-weight: 900;
             margin: 0;
             text-transform: uppercase;
             margin-bottom: 3rem;
-          }
-          .btn {
-            line-height: 3.75em;
-            padding: 0 2.8125em;
-            background: #0d47a1;
-            color: #fff;
-            font-size: 0.875em;
-            letter-spacing: 0.5px;
-            cursor: pointer;
-            border: none;
-            border-radius: 5px;
-            display: inline-block;
-            font-weight: 700;
-            text-transform: uppercase;
-            margin-top: 0.5rem;
-            transition: all 0.3s cubic-bezier(0.55, 0, 0.5, 1);
-            &:hover {
-              background: rgba(13, 71, 161, 0.7);
-              font-size: 1em;
-            }
           }
         }
       }
     }
   }
   .popular-courses {
-    background-color: #fff;
+    background-color: $color-normal;
     .section-padding {
       padding: 7.125em 0 6.6em;
       .container {
@@ -221,14 +519,14 @@ export default {
           .left-content {
             float: left;
             .section-title {
-              color: #37474f;
+              color: $color-text-black;
               font-size: 1.5625rem;
               margin: 0 0 7px;
               font-weight: 900;
               text-transform: uppercase;
             }
             p {
-              color: #90a4ae;
+              color: $color-text-label;
               font-size: 1.125em;
               font-weight: 600;
               line-height: 1.4;
@@ -246,25 +544,38 @@ export default {
               cursor: pointer;
               margin-left: 5px;
               padding: 0;
+              height: 35px;
               > i {
-                background-color: #eceff1 !important;
+                background-color: $color-bg-btn-disable;
                 border-radius: 4px;
                 color: #455a64;
+                font-weight: 700;
                 display: inline-block;
                 font-size: 20px;
                 height: 35px;
                 width: 35px;
                 line-height: 35px;
                 text-align: center;
+                margin: 0;
+                &.swiper-button-prev,
+                &.swiper-button-next {
+                  outline: none;
+                  position: static;
+                  background-image: none;
+                }
               }
             }
           }
         }
         .course-list {
           .courses {
+            white-space: nowrap;
+            overflow: hidden;
             .course-item {
+              display: inline-block;
+              white-space: normal;
               position: relative;
-              width: 270px;
+              width: 270px !important;
               margin-right: 30px;
               .img-wrapper {
                 width: 100%;
@@ -283,7 +594,7 @@ export default {
               }
               .avatar {
                 position: absolute;
-                bottom: 184px;
+                bottom: 224px;
                 left: 20px;
                 right: 20px;
                 z-index: 111;
@@ -299,16 +610,16 @@ export default {
                   margin-left: 30px;
                   font-size: 22px;
                   > a {
-                      color: #90a4ae;
+                    color: $color-text-label;
                   }
                 }
               }
               .item-detail {
-                border: 1px solid #cfd8dc;
+                border: 1px solid $color-color-gray;
                 border-radius: 0 0 5px 5px;
                 padding: 32px 0 0;
                 > .title {
-                  color: #37474f;
+                  color: $color-text-black;
                   display: inline-block;
                   font-size: 16px;
                   font-weight: 700;
@@ -316,16 +627,43 @@ export default {
                   line-height: 1.4;
                   margin: 4px 0;
                   padding: 0 1.25em;
+
                   > a {
-                    color: #37474f;
+                    color: $color-text-black;
+                  }
+                }
+                .price-rate {
+                  padding: 0 1.25em;
+                  display: inline-block;
+                  margin: 12px 0 15px;
+                  width: 100%;
+                  .price {
+                    float: left;
+                    color: $color-blue;
+                    font-size: 18px;
+                    font-weight: 700;
+                  }
+                  .rate {
+                    float: right;
+                    .star {
+                      display: inline-block;
+                      vertical-align: middle;
+                    }
+                    .num {
+                      display: inline-block;
+                      vertical-align: middle;
+                      color: $color-text-black;
+                      font-size: 14px;
+                      font-weight: 700;
+                    }
                   }
                 }
                 > .label {
                   display: inline-block;
-                  margin: 10px 0;
+                  margin-bottom: 10px;
                   padding: 0 1.25em;
                   width: 100%;
-                  color: #90a4ae;
+                  color: $color-text-label;
                   font-size: 0.875em;
                   font-weight: 600;
                   .date {
@@ -336,8 +674,8 @@ export default {
                   }
                 }
                 > .meta {
-                  border-top: 1px solid #cfd8dc;
-                  color: #90a4ae;
+                  border-top: 1px solid $color-color-gray;
+                  color: $color-text-label;
                   font-size: 12px;
                   padding: 0 1.25em;
                   line-height: 55px;
@@ -358,7 +696,7 @@ export default {
                       display: inline-block;
                       vertical-align: middle;
                       margin-left: 5px;
-                      color: #90a4ae;
+                      color: $color-text-label;
                     }
                   }
                   .view {
@@ -371,6 +709,181 @@ export default {
                   }
                 }
               }
+            }
+          }
+        }
+      }
+    }
+  }
+  .hot-search {
+    .section-padding {
+      .container {
+        .courses {
+          height: 630px;
+          margin-bottom: 30px;
+          .el-col {
+            height: 100%;
+          }
+          .wrapper {
+            height: 100%;
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+            &:hover {
+              .thumb {
+                transform: scale(1.1);
+              }
+            }
+            .thumb {
+              height: 100%;
+              background-size: cover;
+              background-repeat: no-repeat;
+              background-position: center;
+              transition: all 0.75s cubic-bezier(0.55, 0, 0.5, 1);
+            }
+            .item-detail {
+              position: absolute;
+              left: 0;
+              right: 0;
+              top: 0;
+              bottom: 0;
+              z-index: 2;
+              .title-wrapper {
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.375em;
+                line-height: 1.3;
+                padding: 2em;
+                text-align: center;
+                .item-title {
+                  text-transform: uppercase;
+                  color: $color-normal;
+                  background-color: $color-bg-overlay;
+                  padding: 15px 0;
+                  border-radius: 5px;
+                }
+              }
+            }
+          }
+          .left {
+            padding-right: 15px;
+          }
+          .right {
+            padding-left: 15px;
+            .right-top {
+              height: 300px;
+              margin-bottom: 30px;
+              .el-col {
+                padding-right: 15px;
+              }
+              .el-col:last-child {
+                padding-left: 15px;
+                padding-right: 0;
+              }
+            }
+            .right-bottom {
+              height: 300px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .best-categories {
+    .category-items {
+      display: flex;
+      flex-wrap: wrap;
+      align-content: space-between;
+      margin: 0 -8px;
+      .item {
+        overflow: hidden;
+        position: relative;
+        margin: 15px 8px;
+        width: 18.55%;
+        cursor: pointer;
+        .item-thumb {
+          img {
+            display: block;
+            width: 100%;
+          }
+        }
+        &:hover {
+          .item-details {
+            top: 0%;
+          }
+        }
+        .item-details {
+          background: rgba(37, 32, 55, 0.6);
+          height: 100%;
+          width: 100%;
+          left: 0;
+          top: 100%;
+          position: absolute;
+          transition: all 0.45s cubic-bezier(0.55, 0, 0.5, 1);
+          > a {
+            color: $color-normal;
+            display: flex;
+            box-pack: center;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: 700;
+            height: 100%;
+            width: 100%;
+            text-transform: uppercase;
+            .item-texts {
+              padding: 0 15px;
+              width: 100%;
+              .icon {
+                color: #fff;
+                display: inline-block;
+                font-size: 32px;
+                margin-bottom: 13px;
+                width: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+    .btn-container {
+      padding-top: 4.625em;
+      margin-bottom: 8px;
+      .btn:hover {
+        transform: scale(1) !important;
+      }
+    }
+  }
+  .facts {
+    background: url("../assets/img/bg/bg2.jpg") center no-repeat;
+    background-size: cover;
+    .overlay {
+      background-color: rgba($color: $color-blue, $alpha: 0.9);
+      .container {
+        color: $color-normal;
+        .item {
+          font-size: 0;
+          .icon {
+            display: inline-block;
+            vertical-align: top;
+            margin-right: 15px;
+            font-size: 55px;
+          }
+          .item-detail {
+            display: inline-block;
+            vertical-align: center;
+            .count {
+              font-size: 50px;
+              font-weight: 300;
+              font-family: "Source Sans Pro", sans-serif;
+            }
+            .title {
+              font-size: 16px;
+              margin-top: 13px;
+              text-transform: uppercase;
+              font-weight: 700;
             }
           }
         }

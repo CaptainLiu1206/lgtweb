@@ -5,13 +5,20 @@ import { createRouter } from './router'
 import { sync } from 'vuex-router-sync'
 import titleMixin from './util/title'
 import * as filters from './util/filters'
+// import VueAwesomeSwiper from 'vue-awesome-swiper'
 
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
 import './assets/scss/index.scss'
 
+if (process.browser) {
+  const VueAwesomeSwiper = require('vue-awesome-swiper/dist/ssr')
+  Vue.use(VueAwesomeSwiper)
+}
+
 Vue.use(ElementUI)
+
 
 // mixin for handling title
 Vue.mixin(titleMixin)
