@@ -66,8 +66,8 @@
                           <span class="title">Demos</span>
                           <i class="el-icon-arrow-down icon"></i>
                           <div class="drop-menu">
-                            <a href="#" class="menu-item">Demo1</a>
-                            <a href="#" class="menu-item">Demo2</a>
+                            <a href="#" style="font-size: 0;" class="menu-item">Demo1</a>
+                            <a href="#" style="font-size: 0;" class="menu-item">Demo2</a>
                           </div>
                         </a>
                     </li>
@@ -181,12 +181,15 @@ export default {};
                 height: 0;
                 opacity: 0;
                 background-color: $color-normal;
+                overflow: hidden;
                 .menu-item {
                   display: block;
                   color: #6d8591;
-                  font-size: 1em;
+                  font-size: 0;
                   font-weight: 600;
-                  line-height: 24px;
+                  height: 0;
+                  overflow: hidden;
+                  line-height: 0;
                   padding: .5em 15px !important;
                   width: 200px;
                   &:hover {
@@ -203,6 +206,11 @@ export default {};
                 .drop-menu {
                   opacity: 1;
                   height: auto;
+                  .menu-item {
+                    height: auto;
+                    font-size: 1em !important;
+                    line-height: 24px;
+                  }
                 }
               }
             }

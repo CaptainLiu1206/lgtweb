@@ -30,7 +30,8 @@
         <div class="container">
           <div class="top-content">
             <div class="left-content">
-              <h2 class="section-title">Popular Courses</h2>
+              <h2 class="section-title">强烈推荐</h2>
+              <!-- <h2 class="section-title">Popular Courses</h2> -->
               <p>Donec rutrum congue leo eget malesuada</p>
             </div>
             <div class="right-content">
@@ -50,63 +51,65 @@
                   v-for="item in popularCourses"
                   :key="`popularCourses_${item.id}`"
                 >
-                  <div class="img-wrapper">
-                    <img
-                      class="course-thumb"
-                      :src="item.imgUrl"
-                      alt=""
-                    >
-                  </div>
-                  <div class="avatar">
-                    <img
-                      :src="item.avatar"
-                      alt=""
-                      class="rounded-circle"
-                    >
-                    <h4 class="instructor">
-                      <a href="">{{item.instructor}}</a>
-                    </h4>
-                  </div>
-                  <div class="item-detail">
-                    <h3 class="title">
-                      <a href="">{{item.title}}</a>
-                    </h3>
-                    <div class="price-rate">
-                      <div class="price">
-                        <span class="currency">￥</span>
-                        <span class="num">{{item.price}}</span>
-                      </div>
-                      <div class="rate">
-                        <span class="star">
-                          <el-rate
-                            v-model="item.rate"
-                            :disabled="true"
-                          ></el-rate>
-                        </span>
-                        <span class="num">{{item.rate}}</span>
-                      </div>
-                    </div>
-                    <div class="label">
-                      <span class="date">{{item.date}}</span>
-                      <span class="city">{{item.city}}</span>
-                    </div>
-                    <div class="meta">
-                      <a
-                        href=""
-                        class="sponsor"
+                  <div class="wrapper">
+                    <div class="img-wrapper">
+                      <img
+                        class="course-thumb"
+                        :src="item.imgUrl"
+                        alt=""
                       >
-                        <div class="thumb-wrapper">
-                          <img
-                            :src="item.sponsor.thumb"
-                            class="rounded-circle"
-                            alt=""
-                          >
+                    </div>
+                    <div class="avatar">
+                      <img
+                        :src="item.avatar"
+                        alt=""
+                        class="rounded-circle"
+                      >
+                      <h4 class="instructor">
+                        <a href="">{{item.instructor}}</a>
+                      </h4>
+                    </div>
+                    <div class="item-detail">
+                      <h3 class="title">
+                        <a href="">{{item.title}}</a>
+                      </h3>
+                      <div class="price-rate">
+                        <div class="price">
+                          <span class="currency">￥</span>
+                          <span class="num">{{item.price}}</span>
                         </div>
-                        <a class="name">{{item.sponsor.name}}</a>
-                      </a>
-                      <div class="view">
-                        <i class="icon el-icon-view"></i>
-                        <span class="times">{{item.viewTime}}</span>
+                        <div class="rate">
+                          <span class="star">
+                            <el-rate
+                              v-model="item.rate"
+                              :disabled="true"
+                            ></el-rate>
+                          </span>
+                          <span class="num">{{item.rate}}</span>
+                        </div>
+                      </div>
+                      <div class="label">
+                        <span class="date">{{item.date}}</span>
+                        <span class="city">{{item.city}}</span>
+                      </div>
+                      <div class="meta">
+                        <a
+                          href=""
+                          class="sponsor"
+                        >
+                          <div class="thumb-wrapper">
+                            <img
+                              :src="item.sponsor.thumb"
+                              class="rounded-circle"
+                              alt=""
+                            >
+                          </div>
+                          <a class="name">{{item.sponsor.name}}</a>
+                        </a>
+                        <div class="view">
+                          <i class="icon el-icon-view"></i>
+                          <span class="times">{{item.viewTime}}</span>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -121,7 +124,8 @@
       <div class="section-padding">
         <div class="container">
           <div class="top-content text-center">
-            <h3 class="section-title">HOT SEARCH</h3>
+            <h3 class="section-title">热门搜索</h3>
+            <!-- <h3 class="section-title">HOT SEARCH</h3> -->
             <P>Donec rutrum congue leo eget malesuada</P>
           </div>
           <el-row class="courses">
@@ -206,7 +210,7 @@
     <section class="best-categories section-padding">
       <div class="container">
         <div class="top-content text-center">
-          <h2 class="section-title">BEST CATEGORIES</h2>
+          <h2 class="section-title">行业分类</h2>
           <p>Donec rutrum congue leo eget malesuada</p>
         </div>
         <div class="category-items">
@@ -265,12 +269,107 @@
         </div>
       </div>
     </section>
+    <section class="popular-courses">
+      <div class="section-padding">
+        <div class="container">
+          <div class="top-content">
+            <div class="left-content">
+              <h2 class="section-title">培训课程</h2>
+              <p>Donec rutrum congue leo eget malesuada</p>
+            </div>
+            <div class="right-content">
+              <button><i class="el-icon-arrow-left swiper-button peixun-swiper-button-prev"></i></button>
+              <button><i class="el-icon-arrow-right swiper-button peixun-swiper-button-next"></i></button>
+            </div>
+          </div>
+          <div class="course-list">
+            <div
+              class="courses"
+              v-swiper:peixunSwiper="peixunSwiperOption"
+              @someSwiperEvent="callback"
+            >
+              <div class="swiper-wrapper">
+                <div
+                  class="swiper-slide course-item"
+                  v-for="item in popularCourses"
+                  :key="`popularCourses_${item.id}`"
+                >
+                  <div class="wrapper">
+                    <div class="img-wrapper">
+                      <img
+                        class="course-thumb"
+                        :src="item.imgUrl"
+                        alt=""
+                      >
+                    </div>
+                    <div class="avatar">
+                      <img
+                        :src="item.avatar"
+                        alt=""
+                        class="rounded-circle"
+                      >
+                      <h4 class="instructor">
+                        <a href="">{{item.instructor}}</a>
+                      </h4>
+                    </div>
+                    <div class="item-detail">
+                      <h3 class="title">
+                        <a href="">{{item.title}}</a>
+                      </h3>
+                      <div class="price-rate">
+                        <div class="price">
+                          <span class="currency">￥</span>
+                          <span class="num">{{item.price}}</span>
+                        </div>
+                        <div class="rate">
+                          <span class="star">
+                            <el-rate
+                              v-model="item.rate"
+                              :disabled="true"
+                            ></el-rate>
+                          </span>
+                          <span class="num">{{item.rate}}</span>
+                        </div>
+                      </div>
+                      <div class="label">
+                        <span class="date">{{item.date}}</span>
+                        <span class="city">{{item.city}}</span>
+                      </div>
+                      <div class="meta">
+                        <a
+                          href=""
+                          class="sponsor"
+                        >
+                          <div class="thumb-wrapper">
+                            <img
+                              :src="item.sponsor.thumb"
+                              class="rounded-circle"
+                              alt=""
+                            >
+                          </div>
+                          <a class="name">{{item.sponsor.name}}</a>
+                        </a>
+                        <div class="view">
+                          <i class="icon el-icon-view"></i>
+                          <span class="times">{{item.viewTime}}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
     <section class="blog-posts bg-black">
       <div class="section-padding">
         <div class="container">
           <div class="top-content">
             <div class="left-content">
-              <h2 class="section-title">RECENT BLOG POSTS</h2>
+              <!-- <h2 class="section-title">RECENT BLOG POSTS</h2> -->
+              <h2 class="section-title">精选口碑</h2>
               <p>Donec rutrum congue leo eget malesuada</p>
             </div>
             <div class="right-content">
@@ -355,7 +454,8 @@
     <section class="subscribe text-center">
       <div class="section-padding">
         <div class="container">
-          <h3 class="title">Subscribe Weekly Newsletter</h3>
+          <!-- <h3 class="title">Subscribe Weekly Newsletter</h3> -->
+          <h3 class="title">Newsletter订阅</h3>
           <div class="form">
             <input
               type="text"
@@ -691,6 +791,15 @@ export default {
           prevEl: ".course-swiper-button-prev"
         }
       },
+      peixunSwiperOption: {
+        slidesPerView: 4,
+        autoplay: true,
+        simulateTouch: true,
+        navigation: {
+          nextEl: ".peixun-swiper-button-next",
+          prevEl: ".peixun-swiper-button-prev"
+        }
+      },
       postsSwiperOption: {
         slidesPerView: 3,
         autoplay: true,
@@ -848,12 +957,32 @@ export default {
           .courses {
             white-space: nowrap;
             overflow: hidden;
+            border-radius: 5px;
             .course-item {
               display: inline-block;
               white-space: normal;
               position: relative;
-              width: 270px !important;
-              margin-right: 30px;
+              width: 100%;
+              text-align: center;
+              .wrapper {
+                display: inline-block;
+                width: 270px;
+              }
+              // 22.5
+              // 11.25
+              // 30
+              &.swiper-slide-active {
+                text-align: left;
+                & + .course-item {
+                  margin-left: -3.75px;
+                  & + .course-item {
+                    margin-right: -3.75rpx;
+                    & + .course-item {
+                      text-align: right;
+                    }
+                  }
+                }
+              }
               .img-wrapper {
                 width: 100%;
                 overflow: hidden;
@@ -958,6 +1087,7 @@ export default {
                   line-height: 55px;
                   padding-bottom: 5px;
                   font-weight: 600;
+                  text-align: left;
                   .sponsor {
                     .thumb-wrapper {
                       display: inline-block;
@@ -1038,8 +1168,9 @@ export default {
                   text-transform: uppercase;
                   color: $color-normal;
                   background-color: $color-bg-overlay;
-                  padding: 15px 0;
+                  padding: 10px;
                   border-radius: 5px;
+                  max-width: 90%;
                 }
               }
             }
@@ -1132,7 +1263,7 @@ export default {
         transform: scale(1) !important;
       }
     }
-  }
+  } 
   .facts {
     background: url("../assets/img/bg/bg2.jpg") center no-repeat;
     background-size: cover;
