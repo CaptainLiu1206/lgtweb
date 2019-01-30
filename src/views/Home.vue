@@ -12,7 +12,7 @@
           v-for="banner in banners"
           :key="`banner_${banner.id}`"
         >
-          <div class="overlay">
+          <!-- <div class="overlay">
             <div class="container">
               <h6 class="sub-title">{{banner.subTitle}}</h6>
               <h2 class="banner-title">{{banner.title}}</h2>
@@ -21,7 +21,7 @@
                 class="btn"
               >GET STARTED</a>
             </div>
-          </div>
+          </div> -->
         </el-carousel-item>
       </el-carousel>
     </section>
@@ -59,7 +59,7 @@
                         alt=""
                       >
                     </div>
-                    <div class="avatar">
+                    <!-- <div class="avatar">
                       <img
                         :src="item.avatar"
                         alt=""
@@ -68,11 +68,12 @@
                       <h4 class="instructor">
                         <a href="">{{item.instructor}}</a>
                       </h4>
-                    </div>
+                    </div> -->
                     <div class="item-detail">
                       <h3 class="title">
                         <a href="">{{item.title}}</a>
                       </h3>
+                      <h4 class="subtitle ellipsis-two">{{item.subTitle}}</h4>
                       <div class="price-rate">
                         <div class="price">
                           <span class="currency">￥</span>
@@ -302,7 +303,7 @@
                         alt=""
                       >
                     </div>
-                    <div class="avatar">
+                    <!-- <div class="avatar">
                       <img
                         :src="item.avatar"
                         alt=""
@@ -311,7 +312,7 @@
                       <h4 class="instructor">
                         <a href="">{{item.instructor}}</a>
                       </h4>
-                    </div>
+                    </div> -->
                     <div class="item-detail">
                       <h3 class="title">
                         <a href="">{{item.title}}</a>
@@ -470,6 +471,7 @@
 </template>
 <script>
 require("swiper/dist/css/swiper.css");
+import { banners, popularCourses, categories, facts, posts, sponsers } from '@/data.js'
 
 export default {
   name: "Home",
@@ -480,308 +482,12 @@ export default {
   data() {
     return {
       pagename: "home page",
-      banners: [
-        {
-          id: 1,
-          url: require("../assets/img/banner/1.jpg"),
-          subTitle: "TAKE THE WORLD’S BEST COURSES",
-          title: "LEARN WITH US"
-        },
-        {
-          id: 2,
-          url: require("../assets/img/banner/2.jpg"),
-          subTitle: "TAKE THE WORLD’S BEST COURSES",
-          title: "LEARN WITH US"
-        },
-        {
-          id: 3,
-          url: require("../assets/img/banner/3.jpg"),
-          subTitle: "TAKE THE WORLD’S BEST COURSES",
-          title: "LEARN WITH US"
-        },
-        {
-          id: 4,
-          url: require("../assets/img/banner/4.jpg"),
-          subTitle: "TAKE THE WORLD’S BEST COURSES",
-          title: "LEARN WITH US"
-        }
-      ],
-      popularCourses: [
-        {
-          id: 1,
-          imgUrl: require("../assets/img/popular/1.jpg"),
-          title: "Complete JavaScript Course 2018: Build Real Projects!",
-          price: "16.99",
-          rate: 3,
-          instructor: "Justin Marks",
-          avatar: require("../assets/img/avatar/1.png"),
-          date: "2018-08-30",
-          city: "北京",
-          sponsor: {
-            thumb: require("../assets/img/avatar/1.png"),
-            name: "阿里巴巴"
-          },
-          viewTime: 10
-        },
-        {
-          id: 2,
-          imgUrl: require("../assets/img/popular/2.jpg"),
-          title: "Complete JavaScript Course 2018: Build Real Projects!",
-          price: "16.99",
-          rate: 3,
-          instructor: "Justin Marks",
-          avatar: require("../assets/img/avatar/2.png"),
-          date: "2018-08-30",
-          city: "北京",
-          sponsor: {
-            thumb: require("../assets/img/avatar/2.png"),
-            name: "阿里巴巴"
-          },
-          viewTime: 10
-        },
-        {
-          id: 3,
-          imgUrl: require("../assets/img/popular/3.jpg"),
-          title: "Complete JavaScript Course 2018: Build Real Projects!",
-          price: "16.99",
-          rate: 3,
-          instructor: "Justin Marks",
-          avatar: require("../assets/img/avatar/3.png"),
-          date: "2018-08-30",
-          city: "北京",
-          sponsor: {
-            thumb: require("../assets/img/avatar/3.png"),
-            name: "阿里巴巴"
-          },
-          viewTime: 10
-        },
-        {
-          id: 4,
-          imgUrl: require("../assets/img/popular/4.jpg"),
-          title: "Complete JavaScript Course 2018: Build Real Projects!",
-          price: "16.99",
-          rate: 3,
-          instructor: "Justin Marks",
-          avatar: require("../assets/img/avatar/4.png"),
-          date: "2018-08-30",
-          city: "北京",
-          sponsor: {
-            thumb: require("../assets/img/avatar/4.png"),
-            name: "阿里巴巴"
-          },
-          viewTime: 10
-        },
-        {
-          id: 5,
-          imgUrl: require("../assets/img/popular/5.jpg"),
-          title: "Complete JavaScript Course 2018: Build Real Projects!",
-          price: "16.99",
-          rate: 3,
-          instructor: "Justin Marks",
-          avatar: require("../assets/img/avatar/5.png"),
-          date: "2018-08-30",
-          city: "北京",
-          sponsor: {
-            thumb: require("../assets/img/avatar/5.png"),
-            name: "阿里巴巴"
-          },
-          viewTime: 10
-        },
-        {
-          id: 6,
-          imgUrl: require("../assets/img/popular/6.jpg"),
-          title: "Complete JavaScript Course 2018: Build Real Projects!",
-          price: "16.99",
-          rate: 3,
-          instructor: "Justin Marks",
-          avatar: require("../assets/img/avatar/6.png"),
-          date: "2018-08-30",
-          city: "北京",
-          sponsor: {
-            thumb: require("../assets/img/avatar/6.png"),
-            name: "阿里巴巴"
-          },
-          viewTime: 10
-        },
-        {
-          id: 7,
-          imgUrl: require("../assets/img/popular/7.jpg"),
-          title: "Complete JavaScript Course 2018: Build Real Projects!",
-          price: "16.99",
-          rate: 3,
-          instructor: "Justin Marks",
-          avatar: require("../assets/img/avatar/7.png"),
-          date: "2018-08-30",
-          city: "北京",
-          sponsor: {
-            thumb: require("../assets/img/avatar/7.png"),
-            name: "阿里巴巴"
-          },
-          viewTime: 10
-        }
-      ],
-      categories: [
-        {
-          id: 1,
-          icon: "el-icon-goods",
-          title: "DESIGN",
-          thumb: require("../assets/img/category/1.jpg")
-        },
-        {
-          id: 2,
-          icon: "el-icon-goods",
-          title: "DESIGN",
-          thumb: require("../assets/img/category/2.jpg")
-        },
-        {
-          id: 3,
-          icon: "el-icon-goods",
-          title: "DESIGN",
-          thumb: require("../assets/img/category/3.jpg")
-        },
-        {
-          id: 4,
-          icon: "el-icon-goods",
-          title: "DESIGN",
-          thumb: require("../assets/img/category/4.jpg")
-        },
-        {
-          id: 5,
-          icon: "el-icon-goods",
-          title: "DESIGN",
-          thumb: require("../assets/img/category/5.jpg")
-        },
-        {
-          id: 6,
-          icon: "el-icon-goods",
-          title: "DESIGN",
-          thumb: require("../assets/img/category/6.jpg")
-        },
-        {
-          id: 7,
-          icon: "el-icon-goods",
-          title: "DESIGN",
-          thumb: require("../assets/img/category/7.jpg")
-        },
-        {
-          id: 8,
-          icon: "el-icon-goods",
-          title: "DESIGN",
-          thumb: require("../assets/img/category/8.jpg")
-        },
-        {
-          id: 9,
-          icon: "el-icon-goods",
-          title: "DESIGN",
-          thumb: require("../assets/img/category/9.jpg")
-        },
-        {
-          id: 10,
-          icon: "el-icon-goods",
-          title: "DESIGN",
-          thumb: require("../assets/img/category/10.jpg")
-        }
-      ],
-      facts: [
-        {
-          id: 1,
-          icon: "el-icon-picture",
-          count: 788,
-          title: "EXPERT INSTRUCTORS"
-        },
-        {
-          id: 2,
-          icon: "el-icon-edit-outline",
-          count: 788,
-          title: "EXPERT INSTRUCTORS"
-        },
-        {
-          id: 3,
-          icon: "el-icon-menu",
-          count: 788,
-          title: "EXPERT INSTRUCTORS"
-        },
-        {
-          id: 4,
-          icon: "el-icon-star-on",
-          count: 788,
-          title: "EXPERT INSTRUCTORS"
-        }
-      ],
-      posts: [
-        {
-          id: 1,
-          thumb: require("../assets/img/posts/4.jpg"),
-          title: "ow To Create A Local Business Directory Site In WordPress",
-          author: "Anthony Doe",
-          date: "2018-07-08"
-        },
-        {
-          id: 2,
-          thumb: require("../assets/img/posts/5.jpg"),
-          title: "ow To Create A Local Business Directory Site In WordPress",
-          author: "Anthony Doe",
-          date: "2018-07-08"
-        },
-        {
-          id: 3,
-          thumb: require("../assets/img/posts/6.jpg"),
-          title: "ow To Create A Local Business Directory Site In WordPress",
-          author: "Anthony Doe",
-          date: "2018-07-08"
-        },
-        {
-          id: 4,
-          thumb: require("../assets/img/posts/7.jpg"),
-          title: "ow To Create A Local Business Directory Site In WordPress",
-          author: "Anthony Doe",
-          date: "2018-07-08"
-        },
-        {
-          id: 5,
-          thumb: require("../assets/img/posts/8.jpg"),
-          title: "ow To Create A Local Business Directory Site In WordPress",
-          author: "Anthony Doe",
-          date: "2018-07-08"
-        }
-      ],
-      sponsers: [
-        {
-          id: 1,
-          name: "阿里巴巴",
-          thumb: require("../assets/img/avatar/1.png"),
-          desc:
-            "A collection of textile samples lay spread out on the table. Samsa was a travelling salesman and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame."
-        },
-        {
-          id: 2,
-          name: "百度",
-          thumb: require("../assets/img/avatar/2.png"),
-          desc:
-            "A collection of textile samples lay spread out on the table. Samsa was a travelling salesman and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame."
-        },
-        {
-          id: 3,
-          name: "腾讯",
-          thumb: require("../assets/img/avatar/3.png"),
-          desc:
-            "A collection of textile samples lay spread out on the table. Samsa was a travelling salesman and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame."
-        },
-        {
-          id: 4,
-          name: "今日头条",
-          thumb: require("../assets/img/avatar/4.png"),
-          desc:
-            "A collection of textile samples lay spread out on the table. Samsa was a travelling salesman and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame."
-        },
-        {
-          id: 5,
-          name: "滴滴",
-          thumb: require("../assets/img/avatar/5.png"),
-          desc:
-            "A collection of textile samples lay spread out on the table. Samsa was a travelling salesman and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame."
-        }
-      ],
+      banners: [],
+      popularCourses: [],
+      categories: [],
+      facts: [],
+      posts: [],
+      sponsers: [],
       coursesSwiperOption: {
         slidesPerView: 4,
         autoplay: true,
@@ -824,6 +530,13 @@ export default {
   },
   methods: {
     callback() {}
+  },
+  created () {
+    this.popularCourses = popularCourses
+    this.banners = banners
+    this.categories = categories
+    this.facts = facts
+    this.sponsers = sponsers
   },
   mounted() {
     //   setTimeout(() => {
@@ -909,7 +622,26 @@ export default {
 .section-padding {
   padding: 7.125em 0;
 }
+.en {
+  .home {
+    .popular-courses {
+      .section-padding {
+        .container {
+          .course-list {
+            .courses {
+              .course-item {
+                .item-detail {}
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.cn {
 
+}
 .home {
   .carousel {
     .banner {
@@ -968,9 +700,6 @@ export default {
                 display: inline-block;
                 width: 270px;
               }
-              // 22.5
-              // 11.25
-              // 30
               &.swiper-slide-active {
                 text-align: left;
                 & + .course-item {
@@ -991,6 +720,7 @@ export default {
                 .course-thumb {
                   display: block;
                   width: 100%;
+                  height: 169px;
                   transition: all 0.3s ease-in;
                   &:hover {
                     opacity: 0.8;
@@ -1023,20 +753,34 @@ export default {
               .item-detail {
                 border: 1px solid $color-border-gray;
                 border-radius: 0 0 5px 5px;
-                padding: 32px 0 0;
+                padding: 10px 0 0;
                 > .title {
                   color: $color-text-black;
                   display: inline-block;
-                  font-size: 16px;
-                  font-weight: 700;
+                  font-size: 14px;
                   letter-spacing: -0.01px;
                   line-height: 1.4;
                   margin: 4px 0;
                   padding: 0 1.25em;
-
+                  text-align: left;
                   > a {
+                    display: block;
                     color: $color-text-black;
+                    height: 44px;
+                    overflow: hidden;
                   }
+                }
+                .subtitle {
+                  margin-top: 12px;
+                  display: block;
+                  padding: 0 1.25em;
+                  font-size: 12px;
+                  height: 40px;
+                  overflow: hidden;
+                  text-align: left;
+                  color: $color-text-meta;
+                  width: 100%;
+                  box-sizing: border-box;
                 }
                 .price-rate {
                   padding: 0 1.25em;
